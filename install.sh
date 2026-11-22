@@ -46,6 +46,14 @@ done < <(find home -type f -print0)
 # Paths in bindings.lua were written for /home/ty.
 sed -i "s|/home/ty/|$HOME/|g" "$HOME/.config/hypr/bindings.lua"
 
+# FT Monogrid (kitty font; freeware, non-commercial — see info.txt in the zip).
+if ! fc-list | grep -qi monogrid; then
+  say "Installing FT Monogrid font"
+  mkdir -p "$HOME/.local/share/fonts/ft-monogrid"
+  unzip -oq fonts/ft-monogrid-font.zip -d "$HOME/.local/share/fonts/ft-monogrid"
+  fc-cache -f "$HOME/.local/share/fonts" >/dev/null
+fi
+
 # Splash/lock PNGs are prebuilt, but rebuild them if rsvg-convert is around.
 if command -v rsvg-convert >/dev/null; then
   rsvg-convert -z 2 "$HOME/.config/quickshell/tetos-splash/tetos-splash.svg" -o "$HOME/.config/quickshell/tetos-splash/tetos-splash.png" || true

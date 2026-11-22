@@ -49,7 +49,7 @@ The rest of my apps (optional — see [`packages/apps.txt`](packages/apps.txt)):
 grep -v '^#' packages/apps.txt | awk 'NF{print $1}' | xargs yay -S --needed
 ```
 
-> **Font not in any repo:** kitty uses **FT Monogrid**. Get it yourself and put it in `~/.local/share/fonts/`, or change `font_family` in `~/.config/kitty/kitty.conf`.
+> **FT Monogrid** (the kitty font) isn't in any package repo. It's bundled in `fonts/ft-monogrid-font.zip`, and `install.sh` installs it to `~/.local/share/fonts/`. It's freeware for non-commercial use ([fontspace](https://www.fontspace.com/ft-monogrid-font-f163310)).
 
 ### 3. Run the installer
 
@@ -125,6 +125,7 @@ home/            → copied into $HOME as-is
 system/          → /usr/local/bin helpers, systemd unit, sudoers template (--system)
 plymouth/        → TetOS Plymouth theme (--plymouth)
 packages/        → required.txt, aur.txt, apps.txt
+fonts/           → FT Monogrid (installed by install.sh)
 install.sh
 ```
 
@@ -133,4 +134,5 @@ install.sh
 - Kasane Teto © TWINDRILL. The wallpapers and art here are fan material; they're credited to their artists and not covered by this repo.
 - Wallpaper transitions: [pocket-dots](https://github.com/diegoMalagrida/pocket-dots) (license in `quickshell/wallfx/LICENSE`).
 - Custom Workspaces bar plugin: Jim Cruz (MIT).
+- FT Monogrid font: freeware, non-commercial ([fontspace](https://www.fontspace.com/ft-monogrid-font-f163310)).
 - Built on [Omarchy](https://omarchy.org).
