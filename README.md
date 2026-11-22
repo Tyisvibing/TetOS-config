@@ -2,7 +2,9 @@
 
 A Kasane Teto–themed setup for [Omarchy](https://omarchy.org) (Arch + Hyprland). It's a set of config files for a stock Omarchy install, not a separate distro.
 
-<p align="center"><img src="home/.config/quickshell/tetos-splash/tetos-splash.png" width="360" alt="TetOS splash"></p>
+![TetOS desktop: Neovim, Chromium and kitty with fastfetch](screenshot.png)
+
+<p align="center"><img src="home/.config/quickshell/tetos-splash/tetos-splash.png" width="300" alt="TetOS login splash"><br><sub>Login splash</sub></p>
 
 ## What's in it
 
