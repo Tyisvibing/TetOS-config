@@ -1,0 +1,13 @@
+#!/bin/bash
+# Set the firmware's one-time "BootNext" to Windows Boot Manager (or clear it with --clear).
+# Root-owned; the user may run it via sudo without a password (/etc/sudoers.d/boot-windows-next).
+set -euo pipefail
+export PATH=/usr/bin:/bin
+# efibootmgr -N fails on v18 ("Boot entry 0001 does not exist"), so remove the variable directly.
+V=/sys/firmware/efi/efivars/BootNext-8be4df61-93ca-11d2-aa0d-00e098032b8c
+if [[ ${1:-} == --clear ]]; then [[ -e $V ]] && { chattr -i "$V"; rm -f "$V"; }; exit 0; fi
+[[ $# -eq 0 ]] || { echo "usage: boot-windows-next [--clear]" >&2; exit 2; }
+num=$(efibootmgr | sed -n 's/^Boot\([0-9A-Fa-f]\{4\}\)\*\? Windows Boot Manager.*/\1/p' | head -1)
+[[ -n $num ]] || { echo "Windows Boot Manager entry not found" >&2; exit 1; }
+efibootmgr --bootnext "$num" >/dev/null
+echo "$num"

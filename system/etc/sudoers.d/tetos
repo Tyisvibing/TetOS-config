@@ -1,0 +1,4 @@
+# Lets the desktop run the root helpers without a password prompt.
+# install.sh replaces __USER__ with your username.
+__USER__ ALL=(root) NOPASSWD: /usr/local/bin/boot-windows-next
+__USER__ ALL=(root) NOPASSWD: /usr/local/bin/desktop-session-set

@@ -1,0 +1,10 @@
+[Unit]
+Description=Put Limine first in the UEFI BootOrder (boot back into the last-used OS)
+ConditionPathExists=/sys/firmware/efi/efivars
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/boot-order-linux-first
+
+[Install]
+WantedBy=multi-user.target

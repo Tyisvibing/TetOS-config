@@ -1,0 +1,11 @@
+[Plymouth Theme]
+Name=TetOS
+Description=TetOS 4.1 boot splash. Welcome to Kasane Territory.
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/tetos
+ScriptFile=/usr/share/plymouth/themes/tetos/tetos.script
+ConsoleLogBackgroundColor=0x6361a0
+MonospaceFont=Cantarell 11
+Font=Cantarell 11

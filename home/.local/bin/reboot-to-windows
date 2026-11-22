@@ -1,0 +1,14 @@
+#!/bin/bash
+# Restart straight into Windows once (via the firmware's BootNext), no BIOS menu.
+# --yes skips the confirmation (used by the Omarchy menu, where picking the row is the confirmation).
+if [[ ${1:-} != --yes ]]; then
+  choice=$(hyprland-dialog --title "Restart to Windows" --apptitle "Restart into Windows?" \
+    --text "Open apps will be closed. Restarts from Windows stay in Windows; use \"Restart to Omarchy\" there to come back." \
+    --buttons "Restart;Cancel" 2>/dev/null)
+  [[ $choice == Restart ]] || exit 0
+fi
+if ! sudo -n /usr/local/bin/boot-windows-next >/dev/null; then
+  notify-send -u critical "Restart to Windows" "Couldn't set the Windows boot entry."
+  exit 1
+fi
+exec omarchy system reboot

@@ -1,0 +1,42 @@
+# The rest of the apps on this machine (optional, not needed for the look).
+# pacman / Omarchy repo:
+mission-center        # task manager (Ctrl+Shift+Esc)
+visual-studio-code-bin
+zed
+neovim
+fish
+obs-studio
+steam
+lib32-vulkan-radeon
+audacious
+cava
+librewolf
+spotify
+swappy
+claude-desktop
+chromaprint           # fpcalc, used by the Muse music player
+aubio
+libqalculate
+fuse2
+openssh
+wget
+ttf-cascadia-code-nerd
+ttf-firacode-nerd
+ttf-iosevka-nerd
+ttf-profont-nerd
+ttf-bitstream-vera-mono-nerd
+ttf-material-symbols-variable
+# Dev toolchains:
+clang
+cmake
+ninja
+dotnet-sdk
+# AUR:
+raleigh-reloaded-git
+yt-dlp-gui
+ytdlp-gui-bin
+snapd                 # then: sudo snap install pulsar --classic  (Super+Alt+P)
+# Other:
+# discord               (Super+Shift+D)
+# Claude Code           https://claude.com/claude-code  (Super+Alt+A, fastfetch usage block)
+# Muse music player     separate project, launcher expected at ~/.local/share/muse/app/muse-player

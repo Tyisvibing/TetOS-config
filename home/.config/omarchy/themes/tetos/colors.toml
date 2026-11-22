@@ -1,0 +1,37 @@
+# TetOS — Kasane Teto palette (from the TetOS 4.1 splash art)
+mode = "dark"
+
+accent = "#c43552"
+selection = "#4a1c27"
+muted = "#6b4a52"
+
+background = "#140d0f"
+dark_background = "#0f0a0b"
+darker_background = "#0a0607"
+lighter_background = "#21151a"
+
+foreground = "#f0dde2"
+dark_foreground = "#6b4a52"
+light_foreground = "#f7e9ed"
+bright_foreground = "#ffffff"
+
+hyprland_active_border = "rgba(c43552ee) rgba(e48aa0ee)"
+hyprland_inactive_border = "rgb(2a1a1e)"
+active_border_color = "#e48aa0"
+active_tab_background = "#c43552"
+
+red = "#d9405e"
+yellow = "#e8b86a"
+orange = "#e8875f"
+green = "#9cc48a"
+cyan = "#86c9c4"
+blue = "#8fa6e0"
+magenta = "#e48aa0"
+brown = "#7a4b4f"
+
+bright_red = "#ef6680"
+bright_yellow = "#f2cf8f"
+bright_green = "#b4d8a4"
+bright_cyan = "#a3dcd8"
+bright_blue = "#aabdf0"
+bright_magenta = "#f2a9bb"

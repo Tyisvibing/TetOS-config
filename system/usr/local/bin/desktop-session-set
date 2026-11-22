@@ -1,0 +1,10 @@
+#!/bin/bash
+# Root helper: picks which session SDDM autologins into, then restarts SDDM.
+set -euo pipefail
+case "${1:-}" in
+  icewm)   session=icewm-session.desktop ;;
+  omarchy) session=omarchy.desktop ;;
+  *) echo "usage: desktop-session-set icewm|omarchy" >&2; exit 1 ;;
+esac
+printf '[Autologin]\nRelogin=true\nSession=%s\n' "$session" > /etc/sddm.conf.d/zz-session-switch.conf
+systemctl restart --no-block sddm

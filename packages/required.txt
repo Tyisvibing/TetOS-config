@@ -1,0 +1,13 @@
+# Needed for TetOS on top of a stock Omarchy install (pacman / Omarchy repo).
+# Install: sudo pacman -S --needed - < <(grep -v '^#' packages/required.txt)
+qt6-shadertools       # compiles the wallfx transition shader
+librsvg               # rsvg-convert, rebuilds the splash/lock PNGs from SVG
+kitty                 # main terminal (Teto background image)
+python                # wallfx transition-map builder
+python-pillow
+ttf-victor-mono-nerd  # terminal font (ghostty/foot/alacritty)
+ttf-liberation        # lock-screen clock font
+hyprland-guiutils     # hyprland-dialog, used by reboot-to-windows
+libnotify             # notify-send
+efibootmgr            # dual-boot helpers (only if you dual-boot Windows)
+omazed                # Zed theme sync hooks (Omarchy repo)

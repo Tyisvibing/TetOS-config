@@ -1,0 +1,24 @@
+#!/bin/bash
+# wallfx-bg-next — `omarchy theme bg next`, but through wallfx-bg-set's transition.
+set -uo pipefail
+
+THEME_NAME=$(cat "$HOME/.local/state/omarchy/current/theme.name" 2>/dev/null)
+LINK="$HOME/.local/state/omarchy/current/background"
+
+mapfile -d '' -t BACKGROUNDS < <(
+  find -L "$HOME/.config/omarchy/backgrounds/$THEME_NAME/" "$HOME/.local/state/omarchy/current/theme/backgrounds/" -maxdepth 1 -type f \
+    \( -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.png' -o -iname '*.gif' -o -iname '*.bmp' -o -iname '*.webp' \
+       -o -iname '*.mp4' -o -iname '*.m4v' -o -iname '*.mov' -o -iname '*.webm' -o -iname '*.mkv' -o -iname '*.avi' \) \
+    -print0 2>/dev/null | sort -z
+)
+(( ${#BACKGROUNDS[@]} )) || exec omarchy-theme-bg-next
+
+CURRENT=$(readlink "$LINK" 2>/dev/null)
+NEXT=${BACKGROUNDS[0]}
+for i in "${!BACKGROUNDS[@]}"; do
+  if [[ ${BACKGROUNDS[$i]} == "$CURRENT" ]]; then
+    NEXT=${BACKGROUNDS[$(( (i + 1) % ${#BACKGROUNDS[@]} ))]}
+    break
+  fi
+done
+exec "$HOME/.local/bin/wallfx-bg-set" "$NEXT"

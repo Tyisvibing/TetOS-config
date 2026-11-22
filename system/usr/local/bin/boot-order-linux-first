@@ -1,0 +1,13 @@
+#!/bin/bash
+# Put Limine first in the firmware BootOrder so plain restarts come back to Omarchy.
+# Runs at every Linux boot (boot-order-linux-first.service). One-shot BootNext (boot-windows-next) is unaffected.
+set -euo pipefail
+export PATH=/usr/bin:/bin
+out=$(efibootmgr)
+lim=$(sed -n 's/^Boot\([0-9A-Fa-f]\{4\}\)\*\? Limine\b.*/\1/p' <<<"$out" | head -1)
+[[ -n $lim ]] || { echo "Limine entry not found" >&2; exit 1; }
+order=$(sed -n 's/^BootOrder: //p' <<<"$out")
+[[ ${order%%,*} == "$lim" ]] && exit 0
+rest=$(tr ',' '\n' <<<"$order" | grep -vix "$lim" | paste -sd, -)
+efibootmgr -o "$lim${rest:+,$rest}" >/dev/null
+echo "BootOrder: $lim${rest:+,$rest}"

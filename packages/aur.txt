@@ -1,0 +1,2 @@
+# AUR packages (install with yay -S --needed ...)
+ttf-chicagoflf        # retro lock-screen date font

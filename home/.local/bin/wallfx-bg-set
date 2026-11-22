@@ -1,0 +1,42 @@
+#!/bin/bash
+# wallfx-bg-set <image> — set the Omarchy background with a pocket-dots transition.
+#
+# Picks the transition (`wallfx elige`: outline-draw if the image has a clear
+# subject, pixel "contagion" otherwise), hands the current theme palette to the
+# wallfx Quickshell layer (`qs -c wallfx`), and lets it play. The layer swaps the
+# real Omarchy background underneath when it is fully covered.
+# Anything missing (video, layer not running, no old image) falls back to the
+# stock `omarchy-theme-bg-set`.
+set -uo pipefail
+
+[[ -n ${1:-} && -f $1 ]] || { echo "usage: wallfx-bg-set <image>" >&2; exit 1; }
+NEW=$(realpath -- "$1")
+LINK="$HOME/.local/state/omarchy/current/background"
+OLD=$(readlink -f "$LINK" 2>/dev/null || true)
+
+fallback() { exec omarchy-theme-bg-set "$NEW"; }
+
+is_image() { [[ ${1,,} =~ \.(jpe?g|png|webp|bmp)$ ]]; }
+is_image "$NEW" && [[ -n $OLD && -f $OLD ]] && is_image "$OLD" && [[ $OLD != "$NEW" ]] || fallback
+qs -c wallfx ipc call wallfx state >/dev/null 2>&1 || fallback
+
+# One change at a time.
+exec 9>"${XDG_RUNTIME_DIR:-/tmp}/wallfx-bg-set.lock" && flock 9
+
+choice=$("$HOME/.local/bin/wallfx" elige "$NEW" 2>/dev/null 9>&-) || fallback
+read -r kind map line <<<"$choice"
+[[ -n ${kind:-} && -n ${map:-} ]] || fallback
+
+# Palette for the burning edge / outline ink: the Omarchy theme's colours.
+colors="$HOME/.local/state/omarchy/current/theme/colors.toml"
+if [[ -f $colors ]]; then
+  pal=$(grep -oE '#[0-9a-fA-F]{6}' "$colors" | awk '!seen[$0]++' | paste -sd, -)
+  [[ -n $pal ]] && qs -c wallfx ipc call wallfx palette "$pal" >/dev/null 2>&1
+fi
+
+[[ $(qs -c wallfx ipc call wallfx play "$OLD" "$NEW" "$kind" "$map" "${line:-$map}" 2>/dev/null) == ok ]] || fallback
+
+# Pre-cut outlines for the rest of the folder, for next time (cached, cheap after the first run).
+nice -n 15 "$HOME/.local/bin/wallfx" warm >/dev/null 2>&1 9>&- &
+disown
+exit 0

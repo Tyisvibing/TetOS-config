@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="368" height="258" viewBox="38 32 368 258">
+  <rect x="38" y="32" width="368" height="258" fill="#ffffff" stroke="#1e1e1e" stroke-width="1.5"/>
+  <path d="M37 291.5 H407.5 V31" fill="none" stroke="#ffffff" stroke-width="1"/>
+
+  <g transform="translate(0,8)">
+  <!-- left drill (light pink), bars poke out like the original -->
+  <g>
+    <polygon points="114,62 170,60 148,146" fill="#d9809a"/>
+    <g stroke="#111" stroke-width="5" stroke-linecap="square">
+      <line x1="104" y1="82" x2="160" y2="76"/>
+      <line x1="112" y1="104" x2="156" y2="98"/>
+      <line x1="122" y1="124" x2="150" y2="120"/>
+    </g>
+  </g>
+  <!-- right drill (deep crimson), mirrored -->
+  <g transform="translate(444,0) scale(-1,1)">
+    <polygon points="114,62 170,60 148,146" fill="#c43552"/>
+    <g stroke="#111" stroke-width="5" stroke-linecap="square">
+      <line x1="104" y1="82" x2="160" y2="76"/>
+      <line x1="112" y1="104" x2="156" y2="98"/>
+      <line x1="122" y1="124" x2="150" y2="120"/>
+    </g>
+  </g>
+
+  <!-- face: crimson square, lighter right side split along the profile -->
+  <rect x="172" y="58" width="100" height="84" fill="#c43552"/>
+  <path d="M234 58 H272 V142 H226 C230 132 224 124 231 114 L222 108 C224 92 229 74 234 58 Z" fill="#e48aa0"/>
+  <!-- profile / nose line, rising past the top like the classic happy face -->
+  <path d="M240 44 C232 58 228 74 222 96 C220 104 224 106 232 108" fill="none" stroke="#111" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- eyes -->
+  <rect x="196" y="76" width="4.5" height="15" fill="#111"/>
+  <rect x="247" y="76" width="4.5" height="15" fill="#111"/>
+  <!-- smile -->
+  <path d="M193 116 Q222 136 252 116" fill="none" stroke="#111" stroke-width="3.2" stroke-linecap="round"/>
+
+  </g>
+  <!-- wordmark -->
+  <text x="222" y="222" text-anchor="middle" font-family="Liberation Serif, Times New Roman, serif" font-size="66" letter-spacing="-2" fill="#111">TetOS 4.1</text>
+
+</svg>
