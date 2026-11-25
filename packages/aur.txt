@@ -1,5 +1,5 @@
 # Needed for TetOS, from the AUR (community packages, built on your PC by yay).
 # install.sh installs these for you.
-ttf-chicagoflf            # retro date font on the lock + login screens
-otf-departure-mono-nerd   # terminal font (alacritty / foot / ghostty)
-ttf-monaco                # kitty's font
+ttf-chicagoflf    # retro date font on the lock + login screens
+ttf-monaco        # kitty's font
+# (The terminal font, DepartureMono Nerd Font, is bundled in fonts/ instead.)

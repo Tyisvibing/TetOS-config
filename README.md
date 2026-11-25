@@ -65,7 +65,7 @@ cd ~/TetOS-config && ./install.sh
 
 | Flag | Adds |
 |---|---|
-| *(none)* | Packages from `packages/required.txt` + `aur.txt`, all of `home/`, the FT Monogrid font, the TetOS theme |
+| *(none)* | Packages from `packages/required.txt` + `aur.txt`, all of `home/`, the bundled fonts (DepartureMono Nerd Font, FT Monogrid), the TetOS theme |
 | `--apps` | The rest of my apps (`packages/apps.txt`) |
 | `--sessions` | Mango + IceWM (`packages/sessions.txt`) |
 | `--build` | Builds and installs knobs and muse-tui |
@@ -163,7 +163,7 @@ plymouth/        TetOS boot-splash theme + installer
 system/          /usr/local/bin helpers, systemd unit, sudoers template (--system)
 packages/        required.txt, aur.txt, sessions.txt, apps.txt
 apps/            knobs and muse-tui source
-fonts/           FT Monogrid (installed by install.sh)
+fonts/           DepartureMono Nerd Font + FT Monogrid (installed by install.sh)
 ```
 
 ## Credits
@@ -171,5 +171,6 @@ fonts/           FT Monogrid (installed by install.sh)
 - Kasane Teto © TWINDRILL. The wallpapers and art here are fan material; they're credited to their artists and not covered by this repo.
 - Wallpaper transitions: [pocket-dots](https://github.com/diegoMalagrida/pocket-dots) (license in `home/.config/quickshell/wallfx/LICENSE`).
 - Custom Workspaces bar plugin: Jim Cruz (MIT).
+- Departure Mono © Helena Zhang, SIL Open Font License 1.1; Nerd Fonts patch v3.5.1 (license inside `fonts/departure-mono-nerd-font.zip`).
 - FT Monogrid font: freeware, non-commercial ([fontspace](https://www.fontspace.com/ft-monogrid-font-f163310)).
 - Built on [Omarchy](https://omarchy.org). TetOS isn't affiliated with Omarchy or Basecamp.

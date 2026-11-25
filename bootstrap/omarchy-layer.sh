@@ -151,7 +151,7 @@ read -rp "    Type ${bold}yes${off} to continue: " answer
 if command -v timeshift >/dev/null; then
   yes_no "Timeshift is installed. Make a snapshot now (recommended)?" &&
     sudo timeshift --create --comments "before TetOS bootstrap" || true
-elif command -v snapper >/dev/null && sudo snapper list-configs 2>/dev/null | grep -q '^root'; then
+elif command -v snapper >/dev/null && grep -q '^root' <<<"$(sudo snapper list-configs 2>/dev/null || true)"; then
   yes_no "Snapper is set up. Make a snapshot now (recommended)?" &&
     sudo snapper -c root create -d "before TetOS bootstrap" || true
 fi
@@ -170,7 +170,7 @@ say "2/7  Adding Omarchy's package repository"
 if ! sudo pacman-key --list-keys "$OMARCHY_KEY" &>/dev/null; then
   if ! sudo pacman-key --recv-keys "$OMARCHY_KEY" --keyserver keys.openpgp.org; then
     info "Keyserver unreachable, using the copy of the key in this repo."
-    gpg --show-keys --with-colons "$HERE/omarchy.gpg" 2>/dev/null | grep -q "^fpr:::::::::$OMARCHY_KEY:" ||
+    grep -q "^fpr:::::::::$OMARCHY_KEY:" <<<"$(gpg --show-keys --with-colons "$HERE/omarchy.gpg" 2>/dev/null || true)" ||
       die "bootstrap/omarchy.gpg doesn't contain the expected Omarchy key."
     sudo pacman-key --add "$HERE/omarchy.gpg"
   fi

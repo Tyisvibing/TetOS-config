@@ -71,7 +71,7 @@ else mode=other
 fi
 
 windows=0
-if [[ -d /sys/firmware/efi/efivars ]] && command -v efibootmgr >/dev/null && efibootmgr 2>/dev/null | grep -q 'Windows Boot Manager'; then
+if [[ -d /sys/firmware/efi/efivars ]] && command -v efibootmgr >/dev/null && grep -q 'Windows Boot Manager' <<<"$(efibootmgr 2>/dev/null || true)"; then
   windows=1
 fi
 
@@ -103,10 +103,11 @@ if [[ ${want[packages]} == yes ]]; then
   fi
   # Skip anything this system's repos don't have (e.g. steam without [multilib])
   # instead of letting one missing name cancel the whole install.
-  mapfile -t available < <(pacman -Slq 2>/dev/null | sort -u)
+  declare -A available=()
+  while read -r name; do available[$name]=1; done < <(pacman -Slq 2>/dev/null || true)
   installable=() missing=()
   for p in "${repo_pkgs[@]}"; do
-    if pacman -Qq "$p" &>/dev/null || printf '%s\n' "${available[@]}" | grep -qxF -- "$p"; then installable+=("$p"); else missing+=("$p"); fi
+    if [[ -n ${available[$p]:-} ]] || pacman -Qq "$p" &>/dev/null; then installable+=("$p"); else missing+=("$p"); fi
   done
   ((${#missing[@]})) && warn "Not in your package repos, skipped: ${missing[*]}"
   if ((${#installable[@]})); then
@@ -140,12 +141,25 @@ while IFS= read -r -d '' src; do
 done < <(find home -type f -print0)
 [[ -d $BACKUP ]] && info "Your old versions are saved in $BACKUP"
 
-# FT Monogrid (freeware, non-commercial; see info.txt in the zip).
-if ! fc-list | grep -qi monogrid && command -v unzip >/dev/null; then
-  info "Installing the FT Monogrid font"
-  mkdir -p "$HOME/.local/share/fonts/ft-monogrid"
-  unzip -oq fonts/ft-monogrid-font.zip -d "$HOME/.local/share/fonts/ft-monogrid"
-  fc-cache -f "$HOME/.local/share/fonts" >/dev/null
+# Bundled fonts: DepartureMono Nerd Font (terminals; SIL OFL) and FT Monogrid
+# (freeware, non-commercial; see info.txt in its zip).
+if command -v unzip >/dev/null; then
+  fonts_added=0
+  # Captured first: with pipefail, "fc-list | grep -q" can fail on SIGPIPE even when it matches.
+  installed_fonts=$(fc-list 2>/dev/null || true)
+  if ! grep -q 'DepartureMono Nerd Font' <<<"$installed_fonts"; then
+    info "Installing the DepartureMono Nerd Font"
+    mkdir -p "$HOME/.local/share/fonts/departure-mono"
+    unzip -oq fonts/departure-mono-nerd-font.zip -d "$HOME/.local/share/fonts/departure-mono"
+    fonts_added=1
+  fi
+  if ! grep -qi monogrid <<<"$installed_fonts"; then
+    info "Installing the FT Monogrid font"
+    mkdir -p "$HOME/.local/share/fonts/ft-monogrid"
+    unzip -oq fonts/ft-monogrid-font.zip -d "$HOME/.local/share/fonts/ft-monogrid"
+    fonts_added=1
+  fi
+  ((fonts_added)) && fc-cache -f "$HOME/.local/share/fonts" >/dev/null
 fi
 
 # The splash PNG is prebuilt, but rebuild it from the SVG when rsvg-convert is around.
