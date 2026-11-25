@@ -1,15 +1,15 @@
-# The rest of the apps on this machine (optional, not needed for the look).
-# pacman / Omarchy repo:
+# The rest of the apps on my machine. Optional: TetOS looks the same without them.
+# install.sh asks before installing these. Lines ending in "# AUR" come from the AUR.
 mission-center        # task manager (Ctrl+Shift+Esc)
-visual-studio-code-bin
+visual-studio-code-bin  # (Super+Ctrl+C)
 zed
 neovim
 fish
 obs-studio
 steam
-lib32-vulkan-radeon
 audacious
-cava
+cava                  # terminal audio visualizer (config included)
+cliamp                # terminal music player (Omarchy repo)
 librewolf
 spotify
 swappy
@@ -20,23 +20,25 @@ libqalculate
 fuse2
 openssh
 wget
+xterm
 ttf-cascadia-code-nerd
 ttf-firacode-nerd
 ttf-iosevka-nerd
 ttf-profont-nerd
 ttf-bitstream-vera-mono-nerd
+ttf-victor-mono-nerd
 ttf-material-symbols-variable
-# Dev toolchains:
 clang
 cmake
 ninja
 dotnet-sdk
-# AUR:
-raleigh-reloaded-git
-yt-dlp-gui
-ytdlp-gui-bin
-snapd                 # then: sudo snap install pulsar --classic  (Super+Alt+P)
-# Other:
-# discord               (Super+Shift+D)
-# Claude Code           https://claude.com/claude-code  (Super+Alt+A, fastfetch usage block)
-# Muse music player     separate project, launcher expected at ~/.local/share/muse/app/muse-player
+opera                 # AUR  (Super+Alt+O)
+warpd-wayland         # AUR  keyboard-driven mouse (Super+Alt+M / H / U)
+ytdlp-gui-bin         # AUR
+raleigh-reloaded-git  # AUR  GTK theme
+# Not installed automatically:
+#   lib32-vulkan-radeon, ollama-rocm   AMD-GPU specific, only if you have an AMD card
+#   snapd + `sudo snap install pulsar --classic`   Pulsar editor (Super+Alt+P)
+#   discord             (Super+Shift+D)
+#   Claude Code         https://claude.com/claude-code  (Super+Alt+A, fastfetch usage block)
+#   Muse music player   separate project (Super+Shift+M); launcher expected at ~/.local/share/muse/app/muse-player

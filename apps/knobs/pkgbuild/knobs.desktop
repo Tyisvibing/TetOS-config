@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Application
+Name=Knobs
+Comment=Any config file as a settings menu, explained from its own docs
+Comment[da]=Enhver konfigurationsfil som en indstillingsmenu, forklaret ud fra dens egen dokumentation
+Comment[de]=Jede Konfigurationsdatei als Einstellungsmenü, erklärt aus ihrer eigenen Doku
+Comment[es]=Cualquier archivo de configuración como un menú de ajustes, explicado con su propia documentación
+Exec=knobs %f
+Icon=knobs
+Terminal=false
+Categories=Utility;Settings;
+MimeType=text/plain;
+Keywords=config;settings;dotfiles;
+StartupWMClass=knobs

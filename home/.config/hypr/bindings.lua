@@ -50,3 +50,16 @@ o.bind("SUPER + CTRL + ALT + BRACKETRIGHT", "Restart to Windows", "~/.local/bin/
 
 -- Pulsar editor (snap). Forced onto XWayland: the strict snap cannot reach the Wayland socket on Arch.
 o.bind("SUPER + ALT + P", "Pulsar", { launch = "/var/lib/snapd/snap/bin/pulsar-edit --ozone-platform=x11", focus = "^Pulsar$" })
+
+-- Volume on Ctrl+- / Ctrl+= (WIN 60 HE has no media keys). Note: steals browser/app zoom shortcuts.
+o.bind("CTRL + EQUAL", "Volume up", { audio = "raise" }, { locked = true, repeating = true })
+o.bind("CTRL + MINUS", "Volume down", { audio = "lower" }, { locked = true, repeating = true })
+
+-- Opera browser (focus if already open).
+o.bind("SUPER + ALT + O", "Opera", { launch = "opera", focus = "^opera$" })
+
+-- warpd: keyboard mouse control. hjkl move, m/,/. click L/M/R, v drag, Esc exits.
+o.bind("SUPER + ALT + M", "Keyboard mouse (normal)", "warpd --normal")
+o.bind("SUPER + ALT + H", "Keyboard mouse (hints)", "warpd --hint")
+o.bind("SUPER + ALT + U", "Keyboard mouse (grid)", "warpd --grid")
+o.bind("SUPER + SHIFT + ALT + K", "warpd keybindings", "~/.local/bin/omarchy-menu-warpd-keybindings")

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Muse (Terminal)
+Comment=Terminal player for the Muse library, with audio visualizer
+Exec=muse-tui
+Terminal=true
+Icon=audio-x-generic
+Categories=Audio;Music;Player;

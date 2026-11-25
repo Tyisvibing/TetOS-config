@@ -27,3 +27,6 @@ require("default.hypr.toggles")
 
 -- Add any other personal Hyprland configuration below.
 -- o.window("qemu", { workspace = "5" })
+
+-- Audacious restores off-screen positions; always open it centered.
+o.window("^(Audacious|audacious)$", { center = true })

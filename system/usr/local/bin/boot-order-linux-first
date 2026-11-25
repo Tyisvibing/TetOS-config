@@ -1,13 +1,22 @@
 #!/bin/bash
-# Put Limine first in the firmware BootOrder so plain restarts come back to Omarchy.
+# Put the Linux boot entry first in the firmware BootOrder, so plain restarts come back to Linux.
 # Runs at every Linux boot (boot-order-linux-first.service). One-shot BootNext (boot-windows-next) is unaffected.
+#
+# The Linux entry is the one this boot came from (BootCurrent), which works for Limine, GRUB,
+# systemd-boot or rEFInd alike. If that can't be used, it falls back to an entry named "Limine".
 set -euo pipefail
 export PATH=/usr/bin:/bin
 out=$(efibootmgr)
-lim=$(sed -n 's/^Boot\([0-9A-Fa-f]\{4\}\)\*\? Limine\b.*/\1/p' <<<"$out" | head -1)
-[[ -n $lim ]] || { echo "Limine entry not found" >&2; exit 1; }
+cur=$(sed -n 's/^BootCurrent: \([0-9A-Fa-f]\{4\}\)$/\1/p' <<<"$out")
+lin=""
+if [[ -n $cur ]] && ! grep -qiE "^Boot${cur}\*? .*Windows Boot Manager" <<<"$out"; then
+  lin=$cur
+else
+  lin=$(sed -n 's/^Boot\([0-9A-Fa-f]\{4\}\)\*\? Limine\b.*/\1/p' <<<"$out" | head -1)
+fi
+[[ -n $lin ]] || { echo "Linux boot entry not found" >&2; exit 1; }
 order=$(sed -n 's/^BootOrder: //p' <<<"$out")
-[[ ${order%%,*} == "$lim" ]] && exit 0
-rest=$(tr ',' '\n' <<<"$order" | grep -vix "$lim" | paste -sd, -)
-efibootmgr -o "$lim${rest:+,$rest}" >/dev/null
-echo "BootOrder: $lim${rest:+,$rest}"
+[[ ${order%%,*} == "$lin" ]] && exit 0
+rest=$(tr ',' '\n' <<<"$order" | grep -vix "$lin" | paste -sd, -)
+efibootmgr -o "$lin${rest:+,$rest}" >/dev/null
+echo "BootOrder: $lin${rest:+,$rest}"

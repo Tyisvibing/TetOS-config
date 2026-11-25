@@ -1,2 +1,5 @@
-# AUR packages (install with yay -S --needed ...)
-ttf-chicagoflf        # retro lock-screen date font
+# Needed for TetOS, from the AUR (community packages, built on your PC by yay).
+# install.sh installs these for you.
+ttf-chicagoflf            # retro date font on the lock + login screens
+otf-departure-mono-nerd   # terminal font (alacritty / foot / ghostty)
+ttf-monaco                # kitty's font

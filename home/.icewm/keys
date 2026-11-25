@@ -1,0 +1,56 @@
+# Ty's IceWM key bindings: app launchers mirroring ~/.config/hypr/bindings.lua.
+# Window/workspace keys are in ~/.icewm/preferences. Reload: icesh restart
+
+# --- essentials ---
+key "Super+Return"           kitty
+key "Super+Shift+Return"     librewolf
+key "Super+Shift+b"          librewolf
+key "Super+Shift+Alt+b"      librewolf --private-window
+key "Super+Shift+f"          nautilus --new-window
+key "Super+Shift+n"          kitty -e nvim
+key "Super+Alt+Return"       kitty -e tmux new -A -s main
+key "Super+Alt+space"        rofi -show drun
+key "Super+k"                sh -c ~/.icewm/keybinds.sh
+key "Super+Escape"           sh -c ~/.icewm/power.sh
+key "Super+q"                icesh -f close
+
+# --- your apps ---
+key "Super+Ctrl+c"           code
+key "Super+Shift+d"          discord
+key "Super+Shift+o"          obsidian
+key "Super+Shift+w"          omawrite
+key "Super+Shift+q"          omacalc
+key "XF86Calculator"         omacalc
+key "Super+Shift+m"          /home/ty/.local/share/muse/app/muse-player
+key "Super+Shift+Alt+m"      kitty -e cliamp
+key "Super+Alt+a"            kitty --class=org.omarchy.claude -o background_image=none -e /home/ty/.local/share/mise/command-wrappers/bin/claude
+key "Super+Alt+o"            opera
+key "Super+Alt+p"            /var/lib/snapd/snap/bin/pulsar-edit --ozone-platform=x11
+key "Ctrl+Shift+Escape"      missioncenter
+key "Super+Ctrl+Alt+bracketright" sh -c "~/.icewm/power.sh windows"
+
+# --- web apps (Chromium app windows, like Omarchy) ---
+key "Super+Shift+a"          chromium --app=https://chatgpt.com
+key "Super+Shift+Alt+a"      chromium --app=https://grok.com
+key "Super+Shift+c"          chromium --app=https://app.hey.com/calendar/weeks/
+key "Super+Shift+e"          chromium --app=https://app.hey.com
+key "Super+Shift+y"          chromium --app=https://youtube.com/
+key "Super+Shift+Alt+g"      chromium --app=https://web.whatsapp.com/
+key "Super+Shift+Ctrl+g"     chromium --app=https://messages.google.com/web/conversations
+key "Super+Shift+p"          chromium --app=https://photos.google.com/
+key "Super+Shift+s"          chromium --app=https://maps.google.com/
+key "Super+Shift+x"          chromium --app=https://x.com/
+
+# --- screenshot (drag a region) ---
+key "Print"                  sh -c ~/.icewm/screenshot.sh
+key "Super+Ctrl+Alt+c"       sh -c ~/.icewm/screenshot.sh
+
+# --- volume / media / brightness ---
+key "Ctrl+equal"             wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+
+key "Ctrl+minus"             wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+key "XF86AudioRaiseVolume"   wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+
+key "XF86AudioLowerVolume"   wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+key "XF86AudioMute"          wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+key "XF86AudioMicMute"       wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
+key "XF86MonBrightnessUp"    brightnessctl set 5%+
+key "XF86MonBrightnessDown"  brightnessctl set 5%-

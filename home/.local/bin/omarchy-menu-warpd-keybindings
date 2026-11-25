@@ -1,0 +1,33 @@
+#!/bin/bash
+# Searchable warpd key list, styled like the Tmux/Herdr keybinding menus.
+records=$(cat <<'R'
+SUPER ALT + M                    → Start warpd in normal mode
+SUPER ALT + H                    → Start warpd in hint mode
+SUPER ALT + U                    → Start warpd in grid mode
+h / j / k / l                    → Move pointer left / down / up / right
+a (hold)                         → Speed up pointer
+d (hold)                         → Slow down pointer
+SHIFT + H / M / L                → Jump to top / middle / bottom of screen
+0 / $                            → Jump to left / right edge
+m / , / .                        → Left / middle / right click
+n / - / /                        → Left / middle / right click and exit
+v                                → Toggle drag
+c                                → Copy and exit (after drag)
+e                                → Scroll down
+r                                → Scroll up
+x                                → Hint mode
+SHIFT + X                        → Two-pass hint mode
+g                                → Grid mode
+s                                → Screen select mode
+;                                → Hint history mode
+CTRL + O / CTRL + I              → History back / forward
+p                                → Print cursor coordinates
+GRID + u / i / j / k             → Pick grid quadrant
+GRID + w / a / s / d             → Move grid
+GRID + c                         → Back to normal mode
+HINT + BACKSPACE                 → Undo last hint step
+ESCAPE                           → Exit warpd
+R
+)
+if [[ $1 == "--print" || $1 == "-p" ]]; then printf '%s\n' "$records"; exit 0; fi
+printf '%s\n' "$records" | omarchy-menu-select "warpd keybindings" -- --width 800 --height 500 >/dev/null || true

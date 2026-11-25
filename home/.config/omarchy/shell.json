@@ -1,32 +1,13 @@
 {
-  "version": 1,
-  "idle": {
-    "screensaver": 150,
-    "lock": 0
-  },
   "bar": {
-    "position": "top",
-    "background": "opaque",
+    "background": "glassy",
     "layout": {
-      "left": [
+      "center": [
         {
-          "id": "omarchy.menu"
-        },
-        {
-          "id": "jcruz.custom-workspaces",
-          "icons": [
-            "",
-            "",
-            "",
-            "",
-            "󰎆",
-            "",
-            "",
-            "",
-            "",
-            ""
-          ],
-          "activeIcon": ""
+          "format": "ddd d MMM h:mm AP",
+          "formatAlt": "d MMMM 'W'ww yyyy",
+          "id": "omarchy.clock",
+          "verticalFormat": "HH\n—\nmm"
         }
       ],
       "centerBegin": [
@@ -34,17 +15,8 @@
           "id": "omarchy.indicators"
         }
       ],
-      "center": [
-        {
-          "id": "omarchy.clock",
-          "format": "ddd d MMM h:mm AP",
-          "formatAlt": "d MMMM 'W'ww yyyy",
-          "verticalFormat": "HH\n—\nmm"
-        }
-      ],
       "centerEnd": [
         {
-          "id": "omarchy.elsewhen",
           "cities": [
             {
               "name": "UTC",
@@ -66,13 +38,35 @@
               "name": "New York",
               "zone": "America/New_York"
             }
-          ]
+          ],
+          "id": "omarchy.elsewhen"
         },
         {
           "id": "omarchy.weather"
         },
         {
           "id": "omarchy.system-update"
+        }
+      ],
+      "left": [
+        {
+          "id": "omarchy.menu"
+        },
+        {
+          "activeIcon": "",
+          "icons": [
+            "",
+            "",
+            "",
+            "",
+            "󰎆",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "id": "jcruz.custom-workspaces"
         }
       ],
       "right": [
@@ -106,10 +100,16 @@
           "id": "superwhisper.panel"
         }
       ]
-    }
+    },
+    "position": "top"
   },
+  "cloneSourceRestores": [
+    "ty.lock"
+  ],
+  "disabledPlugins": [
+    "omarchy.lock"
+  ],
   "dock": {
-    "position": "bottom",
     "pinned": [
       "org.gnome.Nautilus",
       "chromium",
@@ -118,17 +118,17 @@
       "omawrite",
       "X",
       "YouTube"
-    ]
+    ],
+    "position": "bottom"
+  },
+  "idle": {
+    "lock": 0,
+    "screensaver": 150
   },
   "plugins": [
     {
       "id": "ty.lock"
     }
   ],
-  "disabledPlugins": [
-    "omarchy.lock"
-  ],
-  "cloneSourceRestores": [
-    "ty.lock"
-  ]
+  "version": 1
 }

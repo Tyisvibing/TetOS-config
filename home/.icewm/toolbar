@@ -1,0 +1,6 @@
+prog "Terminal" utilities-terminal kitty
+prog "LibreWolf" librewolf librewolf
+prog "Files" system-file-manager nautilus --new-window
+prog "VS Code" code code
+prog "Obsidian" obsidian obsidian
+prog "Discord" discord discord

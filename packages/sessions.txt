@@ -1,0 +1,5 @@
+# Optional extra desktop sessions you can pick at the login screen.
+# Their configs (~/.config/mango, ~/.icewm) use the same keybinds and apps as Omarchy.
+mangowm               # "Mango": a lightweight Wayland compositor (+ quickshell bar "mangobar")
+icewm                 # "IceWM": a retro X11 window manager
+rofi                  # app launcher used by both (Super + Space)

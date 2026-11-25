@@ -1,0 +1,9 @@
+[SddmGreeterTheme]
+Name=TetOS
+Description=TetOS 4.1 retro login, matching the TetOS splash and lock screen
+Author=ty
+Type=sddm-theme
+Version=1.0
+MainScript=Main.qml
+ConfigFile=theme.conf
+QtVersion=6

@@ -1,0 +1,58 @@
+# Ty's IceWM prefs: Omarchy/Hyprland-style binds (Super = the Omarchy key).
+# Tap Super alone to open the start menu. Super+K lists the custom binds in ~/.icewm/keys.
+Win95Keys=1
+ModSuperIsCtrlAlt=0
+TerminalCommand="kitty"
+LogoutCommand=""
+DesktopBackgroundColor="#6361a0"
+WorkspaceNames=" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 ", " 10 "
+
+# --- windows ---
+KeyWinClose="Super+w"
+KeyWinFullscreen="Super+f"
+KeyWinMaximize="Super+Alt+f"
+KeyWinMinimize="Super+m"
+KeyWinMenu="Super+o"
+KeyWinTileLeft="Super+Shift+Left"
+KeyWinTileRight="Super+Shift+Right"
+KeyWinTileTop="Super+Shift+Up"
+KeyWinTileBottom="Super+Shift+Down"
+KeyWinTileCenter="Super+t"
+KeySysShowDesktop="Super+d"
+
+# --- menus ---
+KeySysMenu="Super+space"
+KeySysWindowList="Super+Ctrl+space"
+
+# --- workspaces ---
+KeySysWorkspaceNext="Super+Tab"
+KeySysWorkspacePrev="Super+Shift+Tab"
+KeySysWorkspaceLast="Super+Ctrl+Tab"
+KeySysWorkspace1="Super+1"
+KeySysWorkspace2="Super+2"
+KeySysWorkspace3="Super+3"
+KeySysWorkspace4="Super+4"
+KeySysWorkspace5="Super+5"
+KeySysWorkspace6="Super+6"
+KeySysWorkspace7="Super+7"
+KeySysWorkspace8="Super+8"
+KeySysWorkspace9="Super+9"
+KeySysWorkspace10="Super+0"
+KeySysWorkspace1TakeWin="Super+Shift+1"
+KeySysWorkspace2TakeWin="Super+Shift+2"
+KeySysWorkspace3TakeWin="Super+Shift+3"
+KeySysWorkspace4TakeWin="Super+Shift+4"
+KeySysWorkspace5TakeWin="Super+Shift+5"
+KeySysWorkspace6TakeWin="Super+Shift+6"
+KeySysWorkspace7TakeWin="Super+Shift+7"
+KeySysWorkspace8TakeWin="Super+Shift+8"
+KeySysWorkspace9TakeWin="Super+Shift+9"
+KeySysWorkspace10TakeWin="Super+Shift+0"
+
+# --- fonts: Chicago (ChicagoFLF) like the reference rice ---
+TitleFontNameXft="ChicagoFLF:size=11"
+ActiveButtonFontNameXft="ChicagoFLF:size=11:bold"
+MenuFontNameXft="ChicagoFLF:size=11"
+ToolTipFontNameXft="ChicagoFLF:size=11"
+StatusFontNameXft="ChicagoFLF:size=11"
+ClockFontNameXft="ChicagoFLF:size=11"

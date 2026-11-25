@@ -1,3 +1,9 @@
 *.bak*
 *.orig
 __pycache__/
+# build output from apps/
+apps/muse-tui/muse-tui
+apps/knobs/build/
+apps/knobs/pkgbuild/pkg/
+apps/knobs/pkgbuild/src/
+*.pkg.tar.*

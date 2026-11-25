@@ -1,0 +1,4 @@
+# Wayland: warpd hides the real pointer and draws this indicator instead.
+cursor_color: #00ff88
+cursor_size: 14
+speed: 600
